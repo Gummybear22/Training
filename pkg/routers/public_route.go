@@ -1,12 +1,17 @@
 package routers
 
 import (
+	"Template/pkg/controllers"
 	"Template/pkg/controllers/healthchecks"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 func SetupPublicRoutes(app *fiber.App) {
+
+	app.Get("/", controllers.ListAccounts)
+
+	app.Post("/account", controllers.CreateAccount)
 
 	// Endpoints
 	apiEndpoint := app.Group("/api")
