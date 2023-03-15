@@ -8,10 +8,12 @@ import (
 )
 
 func SetupPublicRoutes(app *fiber.App) {
-
-	app.Get("/", controllers.ListAccounts)
-
-	app.Post("/account", controllers.CreateAccount)
+	// TEST ROUTES
+	testRoutes := app.Group("/test")
+	testRoutes.Post("/reg", controllers.RegisterSample)
+	testRoutes.Post("/ver", controllers.LoginAuth)
+	testRoutes.Post("/update", controllers.UpdateAccount)
+	testRoutes.Get("/accounts", controllers.ListAccounts)
 
 	// Endpoints
 	apiEndpoint := app.Group("/api")
